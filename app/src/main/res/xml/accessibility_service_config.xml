@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  只读系统剪贴板，不需要读取窗口内容，因此 canRetrieveWindowContent 保持 false。
+  事件类型挑的是「可能触发复制」的那几种，配合 notificationTimeout 节流，
+  避免高频回调耗电，也避免 Android 12+ 反复弹「已读取剪贴板」提示。
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/a11y_description"
+    android:accessibilityEventTypes="typeViewClicked|typeViewLongClicked|typeViewTextSelectionChanged|typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault"
+    android:canRetrieveWindowContent="false"
+    android:notificationTimeout="100" />

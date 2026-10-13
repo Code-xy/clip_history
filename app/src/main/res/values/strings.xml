@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">剪贴板+</string>
+    <string name="a11y_description">记录你在其他 App 复制的文字，方便随时找回、搜索和再次复制。本服务只读取系统剪贴板，不采集界面内容，不联网上传。</string>
+</resources>

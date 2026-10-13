@@ -1,0 +1,2 @@
+-keep class com.seagull.clip.** { *; }
+-dontwarn org.jetbrains.annotations.**
