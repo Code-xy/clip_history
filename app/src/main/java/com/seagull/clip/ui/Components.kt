@@ -18,7 +18,6 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -130,8 +129,11 @@ fun ClipItem(
                             text = { Text(if (clip.favorite) "取消收藏" else "收藏") },
                             leadingIcon = {
                                 Icon(
-                                    if (clip.favorite) Icons.Filled.StarBorder else Icons.Filled.Star,
-                                    null, Modifier.size(18.dp)
+                                    painter = painterResource(R.drawable.ic_star),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(18.dp),
+                                    tint = if (clip.favorite) Color(0xFFE8A33D)
+                                           else MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                             },
                             onClick = { menu = false; onFav() }

@@ -1,6 +1,5 @@
 package com.seagull.clip.svc
 
-import android.annotation.TargetApi
 import android.graphics.drawable.Icon
 import android.os.Build
 import android.service.quicksettings.Tile
@@ -29,7 +28,6 @@ class ClipTileService : TileService() {
         refresh()
     }
 
-    @TargetApi(Build.VERSION_CODES.N)
     private fun refresh() {
         Prefs.init(this)
         ClipRepo.init(this)
@@ -42,6 +40,6 @@ class ClipTileService : TileService() {
         if (Build.VERSION.SDK_INT >= 29) {
             tile.icon = Icon.createWithResource(this, R.drawable.ic_stat_clip)
         }
-        updateTile(tile)
+        tile.updateTile()
     }
 }
