@@ -50,4 +50,8 @@ jobs:
       abi-filters:    ${{ inputs.abi_filters || '' }}
       version-name:   ${{ inputs.version_name || '' }}
       version-code:   ${{ inputs.version_code || '' }}
-      release-on-tag: ${{ inputs.release_on_tag == false && 'false' || 'true' }}
+      # 注意：tag/push 触发时 inputs.release_on_tag 是「空」，
+      # 而 GH Actions 表达式里 `'' == false` 判为 true —— 直接写
+      # `inputs.release_on_tag == false && 'false' || 'true'` 会得到 'false'，
+      # 导致 tag 构建反而跳过 Release。必须先分流事件类型。
+      release-on-tag: ${{ github.event_name == 'workflow_dispatch' && (inputs.release_on_tag && 'true' || 'false') || 'true' }}
